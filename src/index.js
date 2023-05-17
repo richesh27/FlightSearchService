@@ -4,6 +4,9 @@ const {PORT} = require("./config/serverconfig");
 
 const ApiRoutes  = require('./routes/index');
 
+const sequelize = require('sequelize')
+const db = require('./models/index');
+const {City,Airport}  = require('./models/index')
 
 const setupAndStartServer  = async() =>{
 
@@ -15,8 +18,16 @@ const setupAndStartServer  = async() =>{
 
     app.use('/api',ApiRoutes);
 
-    app.listen(PORT, ()=>{
+    app.listen(PORT, async ()=>{
         console.log(`Server running at port ${PORT}`);
+
+        db.sequelize.sync({alter: true});
+        // const city = await City.findOne({
+        //     where: {
+        //         id:10
+        //     }
+        // });
+        // console.log(city)
     });
 }
 setupAndStartServer();  
