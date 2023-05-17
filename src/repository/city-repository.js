@@ -8,20 +8,22 @@ class cityRepository {
             return city;
         } 
         catch (error) {
+            console.log("Something went wrong in repository layer")
             throw { error };
         }
     }
 
-    async deleteCity({ cityId }) {
+    async deleteCity( cityId ) {
         try {
             await City.destroy({
                 where: {        //whereClause 
-                id: cityId,
-                },
+                id: cityId
+                }
             });
             return true;
         } 
         catch (error) {
+            console.log("Something went wrong in repository layer")
             throw { error };
         }
     }
@@ -36,6 +38,7 @@ class cityRepository {
             return city;
         } 
         catch (error) {
+            console.log("Something went wrong in repository layer")
             throw { error };
         }
     }
@@ -46,6 +49,7 @@ class cityRepository {
             return city;
         } 
         catch (error) {
+            console.log("Something went wrong in repository layer")
             throw { error };
         }
     }
