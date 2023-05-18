@@ -23,6 +23,28 @@ const create = async (req,res) =>{
     }
 }
 
+const getAll = async (req,res)=>{
+    try {
+        const response  = await flightService.getAllFlightData(req.query);
+        return res.status(200).json({
+            data:response,
+            success: true,
+            err : {},
+            message: "Flight fetching successfull"
+        })
+    } 
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Error in fetching filter flight",
+            err: error 
+        }); 
+    }
+}
+
 module.exports = {
-    create
+    create,
+    getAll
 }
